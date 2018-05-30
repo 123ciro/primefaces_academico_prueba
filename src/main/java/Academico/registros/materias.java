@@ -22,6 +22,7 @@ import javax.persistence.Id;
 @Entity
 public class materias implements Serializable {
     
+    
     private static final long serialVersionUID = 1L;
  
     // Persistent Fields:
@@ -67,6 +68,7 @@ public class materias implements Serializable {
         this.codigo = codigo;
         this.descripcion = descripcion;
     }
+    
     
     
     

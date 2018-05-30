@@ -6,11 +6,11 @@
 package Academico.registros;
 
 import java.io.Serializable;
-import java.util.Date;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
-import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.AssertTrue;
@@ -171,10 +171,6 @@ public class personas implements Serializable {
     }
 
  
-    public void save() {
-        FacesContext.getCurrentInstance().addMessage(null,
-                new FacesMessage("Welcome " + nombre + " " + apellido));
-    }
     
     
 }

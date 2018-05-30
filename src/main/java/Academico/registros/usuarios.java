@@ -71,6 +71,13 @@ public class usuarios {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public usuarios(String nombre, String apellido, String usuario, String password) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.usuario = usuario;
+        this.password = password;
+    }
     
     
     
