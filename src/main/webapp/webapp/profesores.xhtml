@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+
+
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+
+
+    <h:head>
+        <style>
+            li{
+                list-style-type: none;
+            }
+            .label{
+                font-weight: bold;
+            }
+
+        </style>
+        <title>Ejemplo de PrimeFaces</title>
+    </h:head>
+
+    <h:body>
+
+        <h:form>
+            
+                   
+            <p:panel id="form" style="font-size: 14px;" header="Registro de Profesores" footer="Todos los datos guardados son Confidenciales."  >
+                
+                <p:focus context="form" />
+                
+                <h:panelGrid  style="margin-bottom:10px" cellpadding="3"  >
+
+
+      
+                    <h:outputLabel for="cedula" value="Cedula: " class="label" />
+                    <p:row>
+                        <p:inputText   id="cedula" value="#{personas.cedula}"  required="true"  placeholder="El valor no debe de ser O"  >
+
+                        </p:inputText>
+
+                        <p:button value="Buscar" />
+                        <p:message class="mensaje" style="font-size: 12px;"   for="cedula" /> 
+                    </p:row>
+                    
+                        <h:outputLabel for="nombre" value="Nombre:  " class="label"/>
+                        <p:inputText   value="#{personas.nombre}" id="nombre" placeholder="Escriba un Nombre..."  required="true" requiredMessage="Debe Introducir un valor en el nombre" >
+
+                        </p:inputText>
+                        <p:message class="mensaje" for="nombre" style="font-size: 12px;"    />
+
+                        <h:outputLabel for="apellido" value="Apellido:  " class="label"/>
+                        <p:inputText   value="#{personas.apellido}" id="apellido" placeholder="Escriba un apellido..." required="true" requiredMessage="Debe introducir un valor en Apellido"  >
+
+                        </p:inputText>
+                         <p:message class="mensaje" for="apellido" style="font-size: 12px;"    />
+
+                    <h:outputLabel value="Facultad donde Estudio" class="label"  />
+                    <p:selectOneMenu value="#{profesores.facultad}" id="facultad" effect="fold" required="true" requiredMessage="Eliga una Facultad">
+                        
+                        <f:selectItem itemLabel="Seleccionar Facultad"  noSelectionOption="true" />
+                        <f:selectItems value="#{profesores.facultades}" />
+                        
+                    </p:selectOneMenu>
+                    <p:message  for="facultad" />
+                    
+                    
+                    <br/>
+
+                    <h:outputLabel value="Subir Foto del Titulo de Estudio"  class="label"/> 
+                    <p:fileUpload label="Elegir Archivo" value="#{profesores.documento}" mode="simple" skinSimple="true"/>
+
+                    <p:row>
+                        <p:commandButton value="Registrar" ajax="false" icon="ui-icon-check" validateClient="true" />
+                        <p:button value="Atras" icon="ui-icon-arrowthick-1-w" outcome="index" />
+                    </p:row>
+                    
+
+                </h:panelGrid>
+            </p:panel>
+        </h:form>
+    </h:body>
+
+</html>

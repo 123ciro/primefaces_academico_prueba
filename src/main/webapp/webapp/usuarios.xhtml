@@ -1,0 +1,91 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    <h:head>
+        <style>
+            li{
+                list-style-type: none;
+            }
+            .label{
+                font-weight: bold;
+            }
+            .mensaje{
+                width: 200px;
+            }
+            
+            .mensajes{
+                  margin-left: 50px;
+            }
+
+        </style>
+        <title>Ejemplo de PrimeFaces</title>
+    </h:head>
+
+    <h:body>
+
+        <h:form  >
+
+            <p:panel  id="form" style="font-size: 14px;" header="Registro de Alumnos"  footer="Todos los datos guardados son Confidenciales."  >
+                <p:focus context="form" />
+                <h:panelGrid columns="4" id="formulario"  style="margin-bottom:10px" cellpadding="3"  >
+
+                    <h:outputLabel value="Cod Usuario" class="label" />
+                    <p:inputText type="number" value="#{usuarios.idusuario}"   />
+
+                    <h:outputLabel value="Nombre" class="label" />
+                    <p:inputText  value="#{usuarios.nombre}" id="nombre" required="true" requiredMessage="Ingrese un Nombre" />
+
+                    
+                    
+                    <h:outputLabel value="Apellido" class="label"  />
+                    <p:inputText value="#{usuarios.apellido}" id="apellido" required="true" requiredMessage="Ingrese un Apellido"  />
+
+
+                    <h:outputLabel value="Usuario" class="label" />
+                    <p:inputText value="#{usuarios.usuario}"  id="usuario" required="true" requiredMessage="Ingrese un Usuario"  />
+
+
+
+                    <h:outputLabel value="Contraseña" class="label" />
+                    <p:password feedback="true" inline="true" value="#{usuarios.password}" id="contraseña" required="true" requiredMessage="Ingrese una Contraseña" />
+                    
+                    <br/>
+                    
+                    
+                    <h:panelGrid class="mensajes">
+                        <p:message for="nombre"  />
+                        <p:message for="apellido" />
+                        <p:message for="usuario" />
+                        <p:message for="contraseña" />
+                    </h:panelGrid>
+
+
+
+
+
+
+
+
+
+
+
+                    <p:row>
+                        <p:commandButton value="Registrar"  update="formulario" validateClient="true" />
+                        <p:button value="Atras" icon="ui-icon-arrowthick-1-w" outcome="index"   />
+                    </p:row>
+
+                </h:panelGrid >
+            </p:panel>
+
+        </h:form>
+
+    </h:body>
+
+</html>
