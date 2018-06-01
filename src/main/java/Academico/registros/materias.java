@@ -6,7 +6,9 @@
 package Academico.registros;
 
 import java.io.Serializable;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,14 +24,10 @@ import javax.persistence.Id;
 @Entity
 public class materias implements Serializable {
     
-    
     private static final long serialVersionUID = 1L;
- 
-    // Persistent Fields:
+ // Persistent Fields:
     @Id @GeneratedValue
     Long idmateria;
-    
-    
     private String nombre;
     private String codigo;
     private String descripcion;
@@ -69,7 +67,10 @@ public class materias implements Serializable {
         this.descripcion = descripcion;
     }
     
-    
+     public void save() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Data Saved"));
+    }
+     
     
     
 }

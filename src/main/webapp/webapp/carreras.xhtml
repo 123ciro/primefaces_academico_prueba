@@ -7,7 +7,7 @@ and open the template in the editor.
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
+
 
       xmlns:p="http://primefaces.org/ui">
 
@@ -29,35 +29,34 @@ and open the template in the editor.
     <h:body>
 
         <h:form>
-            <p:panel id="form" style="font-size: 14px;" header="Materias"  footer="Todos los datos guardados son Confidenciales."  >
+            <p:panel id="form" style="font-size: 14px;" header="Carreras"  footer="Todos los datos guardados son Confidenciales."  >
                 <p:focus context="form" />
                 <h:panelGrid id="formulario" style="margin-bottom:10px" cellpadding="3"  >
 
-                    <h:outputLabel value="ID materia" />
-                    <p:inputText type="number" id="idmateria" value="#{materias.idmateria}" />
-                    <p:message for="idmateria"/>
+                    <!--ID DE LA CARRERA  -->
+                    <h:outputLabel value="ID Carrera" class="label"/>
+                    <p:inputText type="number" id="idcarrera"  value="#{carreras.idcarrera}" required="true" requiredMessage="ID necesario" placeholder="Codigo.." />
                     
-                    <h:outputLabel value="Nombre de la materia" class="label" />
-                    <p:inputText  value="#{materias.nombre}" id="nombre" placeholder="Ingrese un nombre..." required="true" requiredMessage="Debe Ingresar un Nombre" />
-                    <p:message for="nombre"/>
+                    <!--NOMBRE DE LA CARRERA -->
+                    <h:outputLabel value="Nombre" class="label"/>
+                    <p:inputText type="text" id="nombre" value="#{carreras.nombre}" required="true" requiredMessage="Ingrese un Nombre" placeholder="Nombre.." />
+                   
+                    <!--DESCRIPCION -->
+                    <h:outputLabel value="Descripcion" class="label" />
+                    <p:inputTextarea  id="descripcion" value="#{carreras.descripcion}"  />
                     
-                    <h:outputLabel value="Codigo de la materia" class="label" />
-                    <p:inputText  value="#{materias.codigo}" id="codigo" required="true" placeholder="Ingrese un codigo..." requiredMessage="Debe Ingresar un Codigo"  />
-                    <p:message for="codigo"/>
+                    <!--DURACION-->
+                    <h:outputLabel  value="Duracion" class="label"/>
+                    <p:inputText value="#{carreras.duracion}" id="duracion" required="true" requiredMessage="Ingrese la Duracion" />
                     
                     
-                    <h:outputLabel value="Descripcion de la materia" class="label" />
-                    <p:inputTextarea value="#{materias.descripcion}" id="descripcion" cols="35" rows="10" required="true" requiredMessage="Debe Completar este Campo" />
-                    <p:message for="descripcion"/>
                     
                     
-
-                    
-
+                    <p:messages id="messages"/>
                     <p:row>
-                    <p:commandButton value="Registrar"  update="formulario"   validateClient="true" />
+                        <p:commandButton value="Registrar"  update="formulario" actionListener="#{carreras.save}"   validateClient="true" />
 
-                    <p:button value="Atras" icon="ui-icon-arrowthick-1-w" outcome="index"   />
+                        <p:button value="Atras" icon="ui-icon-arrowthick-1-w" outcome="index"   />
                     </p:row>
                 </h:panelGrid >
             </p:panel>

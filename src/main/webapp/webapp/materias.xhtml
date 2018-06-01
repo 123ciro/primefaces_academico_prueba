@@ -10,7 +10,7 @@ and open the template in the editor.
       
 
       xmlns:p="http://primefaces.org/ui">
-
+    
 
 
 
@@ -28,17 +28,17 @@ and open the template in the editor.
 
     <h:body>
 
-        <h:form>
+        <h:form  >
             <p:panel id="form" style="font-size: 14px;" header="Materias"  footer="Todos los datos guardados son Confidenciales."  >
                 <p:focus context="form" />
                 <h:panelGrid id="formulario" style="margin-bottom:10px" cellpadding="3"  >
 
                     <h:outputLabel value="ID materia" />
-                    <p:inputText type="number" id="idmateria" value="#{materias.idmateria}" />
+                    <p:inputText type="number" id="idmateria"  />
                     <p:message for="idmateria"/>
                     
                     <h:outputLabel value="Nombre de la materia" class="label" />
-                    <p:inputText  value="#{materias.nombre}" id="nombre" placeholder="Ingrese un nombre..." required="true" requiredMessage="Debe Ingresar un Nombre" />
+                    <p:inputText  value="#{materias.nombre}"  id="nombre" placeholder="Ingrese un nombre..." required="true" requiredMessage="Debe Ingresar un Nombre" />
                     <p:message for="nombre"/>
                     
                     <h:outputLabel value="Codigo de la materia" class="label" />
@@ -51,7 +51,7 @@ and open the template in the editor.
                     <p:message for="descripcion"/>
 
                     <p:row>
-                    <p:commandButton value="Registrar"  update="formulario"   validateClient="true" />
+                        <p:commandButton value="Registrar" actionListener="#{materias.save()}"   update="formulario"   validateClient="true" style="margin-right:20px;" />
 
                     <p:button value="Atras" icon="ui-icon-arrowthick-1-w" outcome="index"   />
                     </p:row>

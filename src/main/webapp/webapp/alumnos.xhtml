@@ -33,55 +33,41 @@ and open the template in the editor.
     </h:head>
 
     <h:body>
-
         <h:form  >
-            
-            
-        
             <p:panel  id="form" style="font-size: 14px;" header="Registro de Alumnos"  footer="Todos los datos guardados son Confidenciales."  >
                 <p:focus context="form" />
                 <h:panelGrid id="formulario"  style="margin-bottom:10px" cellpadding="3"  >
-
                     <h:outputLabel for="cedula" value="Cedula: " class="label" />
                     <p:row>
-                        <p:inputText   id="cedula" value="#{personas.cedula}"  required="true"  placeholder="El valor no debe de ser O"  >
-
+                        <!--CEDULA -->
+                        <p:inputText   id="cedula" value="#{personas.cedula}"  placeholder="El valor no debe de ser O"  >
                         </p:inputText>
-
-                        <p:button value="Buscar" />
+                        <!--BOTON BUSCAR -->
+                        <p:button value="Buscar" onclick=" click()" />
                         <p:message class="mensaje" style="font-size: 12px;"   for="cedula" /> 
                     </p:row>
                     <h:panelGrid >
+                        <!--NOMBRE -->
                         <h:outputLabel for="nombre" value="Nombre:  " class="label"/>
-                        <p:inputText   value="#{personas.nombre}" id="nombre" placeholder="Escriba un Nombre..."  required="true" requiredMessage="Debe Introducir un valor en el nombre" >
-
-                        </p:inputText>
+                        <p:inputText   value="#{personas.nombre}" id="nombre" placeholder="Escriba un Nombre..."   requiredMessage="Debe Introducir un valor en el nombre" />
                         <p:message class="mensaje" for="nombre" style="font-size: 12px;"    />
-
+                        <!--APELLIDO -->
                         <h:outputLabel for="apellido" value="Apellido:  " class="label"/>
-                        <p:inputText   value="#{personas.apellido}" id="apellido" placeholder="Escriba un apellido..." required="true" requiredMessage="Debe introducir un valor en Apellido"  >
-
-                        </p:inputText>
+                        <p:inputText   value="#{personas.apellido}" id="apellido" placeholder="Escriba un apellido..." required="true" requiredMessage="Debe introducir un valor en Apellido"  />
                         <p:message class="mensaje" style="font-size: 12px;" for="apellido"  /> 
                     </h:panelGrid>
-                    <h:outputLabel value="Fecha de Nacimiento:  " class="label"/> 
-                    <p:calendar  id="nacimiento"  value="#{personas.nacimiento}"  placeholder="09/09/99" required="true" requiredMessage="Introduzca la Fecha de Nacimiento" mask="99/99/99">
-                    </p:calendar>
-
-                    <p:message for="nacimiento" style="font-size: 12px;" class="mensaje" /> 
-
+                    <!--TELEFONO -->
                     <h:outputLabel value="Telefono:  " class="label"/> 
                     <p:inputMask  value="#{personas.telefono}"  placeholder="(0999)999-9999"  mask="(0999)-999-999"/>
-
+                    <!--SEXUALIDAD -->
                     <h:outputLabel value="Sexualidad:  "  class="label"/> 
                     <p:selectOneMenu   value="#{personas.sexualidad}"  style="width: 250px">
-
                         <f:selectItem itemLabel="Eliga una Opcion" itemValue=""></f:selectItem>
                         <f:selectItem itemLabel="Masculino" itemValue="Masculino"></f:selectItem>
                         <f:selectItem itemLabel="Femenino" itemValue="Femenino"></f:selectItem>
                         <f:selectItem itemLabel="Otros" itemValue="Otros"></f:selectItem>
                     </p:selectOneMenu>
-
+                    <!-- ESTADO CIVIL -->
                     <h:outputLabel value="Estado Civil:  "  class="label"/> 
                     <p:selectOneMenu  value="#{personas.estadocivil}"  style="width: 250px">
                         <f:selectItem itemLabel="Eliga una Opcion" itemValue=""></f:selectItem>
@@ -91,38 +77,41 @@ and open the template in the editor.
                         <f:selectItem itemLabel="Separado/a" itemValue="Separado/a"></f:selectItem>
                         <f:selectItem itemLabel="Comprometido/a" itemValue="Comprometido/a"></f:selectItem>
                     </p:selectOneMenu>
-
-                    
-                    
-                    
+                    <!-- CORREO -->
                     <h:outputLabel value="Correo: " class="label"/>
                     <p:inputText  type="email" value="#{personas.correo}" placeholder="example@gmail.com"  />
                     <br/>
-                    <h:panelGrid columns="4">
-                    
-                        <p:selectBooleanCheckbox id="checked" value="#{personas.terminoscondicion}" required="true" requiredMessage="Debe Aceptar los terminos y condiciones" />
-                    <h:outputLabel for="checked" value="Acepto los terminos de Condiciones del Sistema"  />
-                    <p:message for="checked" />
-                    <h:outputText/>
-                    </h:panelGrid>
-                    <p:row>
-                        <p:commandButton value="Registrar"  update="formulario" validateClient="true" />
-                        
-                        
+                    <p:messages id="messages" />
+                    <p:commandButton value="Registrar" actionListener="#{personas.save}" update="form" validateClient="true" oncomplete="PF('dlg').show()" />
+                    <p:button value="Atras" icon="ui-icon-arrowthick-1-w" outcome="index"   />
 
-
-                        <p:button value="Atras" icon="ui-icon-arrowthick-1-w" outcome="index"   />
-                    </p:row>
 
                 </h:panelGrid >
             </p:panel>
 
-            
-            
-            
- 
-            
-            
+
+
+            <p:dialog modal="true" resizable="false" widgetVar="dlg" header="Values" showEffect="clip">
+                <p:panelGrid columns="2" id="display" columnClasses="label,value">
+                    <h:outputText value="Nombre: " />
+                    <h:outputText value="#{personas.nombre}" />
+
+                    <h:outputText value="Apellido: " />
+                    <h:outputText value="#{personas.apellido}" />
+
+                    <h:outputText value="Estado Civil:" />
+                    <h:outputText value="#{personas.estadocivil}" />
+
+                    <h:outputText value="Correo:" />
+                    <h:outputText value="#{personas.correo}" />
+                </p:panelGrid>
+            </p:dialog>
+
+
+
+
+
+
         </h:form>
 
 

@@ -171,6 +171,9 @@ public class personas implements Serializable {
     }
 
  
-    
+    public void save() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Data Saved"));
+    }
+     
     
 }

@@ -6,6 +6,8 @@
 package Academico.registros;
 
 import javax.faces.bean.ManagedBean;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
@@ -15,9 +17,10 @@ import javax.validation.constraints.Size;
  * @author oym-dev06
  */
 @ManagedBean
+@Entity
 public class usuarios {
     
-    @Min(1)
+    @Min(1) @Id
     private int idusuario=1;
     
     @Size(min=5,max=20)
